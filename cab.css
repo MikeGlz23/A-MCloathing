@@ -1,0 +1,264 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+/* RESETEO */
+* {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	border: none;
+	outline: none;
+	color: inherit;
+	list-style: none;
+	font-family: "Poppins";
+}
+/* FOOTER SIEMPRE EN EL BORDE INFERIOR */
+/* -----------CON FLEX------------ */
+
+/* body {
+	min-height: 100vh;
+	height: 100%;
+	display: flex;
+		flex-flow: column nowrap;
+		justify-content: space-between;
+}
+
+main {
+	flex: 1;
+} */
+
+/* -----------CON GRID------------ */
+body {
+	/* ESTAS MEDIDAS SON OBLIGATORIAS PARA QUE EL SITIO MIDA COMO MINIMO EL ALTO DE LA PANTALLA */
+	min-height: 100vh;
+	height: 100%;
+	display: grid;
+	/* ARMA TRES FILAS, "AUTO" SIGNIFICA QUE EL CONTENEDOR SE ADAPTA A SU CONTENIDO, "FR" SIGINIFICA QUE LLENA EL RESTO DEL ESPACIO */
+	grid-template-rows: auto 1fr auto;
+}
+
+/* ESTILO DE TODOS LOS BOTONES */
+.btn {
+	display: inline-block;
+	padding: 0.6em 1.7em;
+	border-radius: 0.3em;
+	font-weight: 800;
+	text-transform: uppercase;
+	letter-spacing: 0.09em;
+}
+
+/* HEADER CON FLEX */
+header {
+	/* EL HEADER QUEDA ARRIBA */
+	position: sticky;
+	top: 0;
+	background: white;
+	z-index: 1;
+	/* SEPARAR LOGO Y MENU */
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	/* ESTILO */
+	padding: 1.5em 2em;
+	box-shadow: 0 0 20px 0 black;
+}
+
+/* NAV CON FLEX */
+nav {
+	display: flex;
+	/* EN VEZ DE DAR PADDING A LOS BOTONES, AL SER SOLO PALABRAS USAMOS "GAP" QUE AGREGA ESPACIO ENTRE LOS ITEMS, DE ESTA FORMA NO HAY QUE DARLE UN ANCHO AL NAV/UL NI PADDING/MARGIN A LOS ENLACES */
+	gap: 1em;
+}
+
+/* HERO CENTRADO CON GRID */
+.hero {
+	background: url("https://editorialtelevisa.brightspotcdn.com/dims4/default/e404a7c/2147483647/strip/false/crop/1280x720+0+0/resize/1280x720!/quality/90/?url=https%3A%2F%2Fk2-prod-editorial-televisa.s3.us-east-1.amazonaws.com%2Fbrightspot%2F11%2Fa4%2F7f0a7ee24121bd17c18727ff5a75%2Fellos-son-los-seis-deportistas-mas-guapos-y-exitosos-actualmente.jpg")
+		no-repeat center/cover;
+	height: 80vh;
+	display: grid;
+	place-content: center; /* ESTO CENTRA LOS HIJOS DEL PADRE VERTICAL Y HORIZONTALMENTE */
+}
+
+/* ESTILO DE LA CAJA DE TEXTO */
+.hero-txt {
+	text-align: center;
+	max-width: 50vw;
+	color: rgb(6, 6, 6);
+	background-color: rgb(255, 255, 255, .4);
+	border-radius: 10px;
+	border: 2px;
+	
+}
+
+.hero-txt h1 > span {
+	margin-top: 0.7em;
+	display: block; /* FILA NUEVA */
+	/* REDUCIR TIPOGRAFIA Y NEGRITA */
+	font-size: 0.7em;
+	font-weight: 400;
+	line-height: 1.8em;
+}
+
+/* COLOR DEL BOTÓN DEL HERO */
+.hero .btn {
+	margin-top: 1.3em;
+	background: white;
+}
+
+.productos {
+	padding: 3em;
+}
+
+.title-c {
+	text-align: center;
+	margin-bottom: 1.5em;
+	text-decoration: underline #db74bb 0.2em;
+	/* SEPARA EL SUBRAYADO DEL TEXTO */
+	text-underline-offset: 0.3em;
+}
+
+/* CONTENEDOR DE TARJETAS RESPONSIVE CON GRID */
+.contenedor {
+	display: grid;
+	/* 	-------------AL USAR GRID, LA ULTIMA FILA NO QUEDA CENTRADA-------------
+	GRID-TEMPLATE-COLUMNS: Esta propiedad de GRID crea las columnas de la grilla.
+	-REPEAT-> (cantidad de columnas, misma medida) -> repeat(2,200px) crea 2 columnas/filas de 200px.
+	-AUTO-FIT-> GRID CREA TANTAS COLUMNAS COMO ITEMS.
+	--> AUTO-FIT PUEDE CAMBIARSE POR AUTO-FILL QUE SIGUE CREANDO COLUMNAS AUNQUE YA USO TODOS LOS ITEMS.
+	-MINMAX-> CADA COLUMNA TIENE COMO MÍNIMO XXX y COMO MÁXIMO UNA FRACCIÓN*/
+
+	/* 	repeat (numero de veces que repite, medida) */
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 2em;
+}
+
+.social-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+.social-float a {
+    display: block;
+    margin-bottom: 10px;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #fbfdcb 0%, #de9fb2 47%, #be5ae0 95%);
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+.social-float a:hover {
+    background-color: #0056b3;
+}
+/* Ajusta los márgenes para diferentes tamaños de pantalla */
+@media (max-width: 576px) {
+    .social-float {
+        bottom: 10px;
+        right: 10px;
+    }
+    .social-float a {
+        margin-bottom: 5px;
+    }
+}
+
+/* TARJETAS CON FLEX*/
+.card {
+	display: flex;
+	flex-flow: column;
+	border-radius: 0.3em;
+	overflow: hidden; /*PARA QUE LA FOTO TENGA EL BORDER-RADIUS ARRIBA*/
+	box-shadow: 0 10px 25px -10px black;
+
+	transition: 300ms ease-in-out; /* TRANSICIÓN PARA EL EFECTO DEL :HOVER */
+	/* 	 */
+}
+
+/* TARJETA CRECE DE TAMAÑO CON HOVER */
+.card:hover {
+	transform: scale(1.05);
+	box-shadow: 0 15px 35px -10px black;
+}
+
+.card-img {
+	width: 100%;
+	flex-basis: 200px; /* FLEX SE USA PARA DARLE UN ALTO MINIMO DE 200PX A LA IMAGEN */
+}
+
+/* ID PARA DAR LAS IMAGENES DE CADA TARJETA */
+#producto-01 {
+	background: url("https://i.pinimg.com/736x/ba/06/05/ba060593a0898761f567c93942a43694.jpg")
+		no-repeat 50% 20% / cover;
+}
+#producto-02 {
+	background: url("https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto,fl_lossy,c_fill,g_auto/8ca0836668b14713819c79a43d2d0465_9366/shorts-de-entrenamiento-tejidos-con-logo.jpg")
+		no-repeat 50% 60% / cover;
+}
+
+#producto-03 {
+	background: url("https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto,fl_lossy,c_fill,g_auto/8c997fa1a77a4dacbec2afc3009878da_9366/chamarra-deportiva-adicolor-classics-sst.jpg")
+		no-repeat 50% 60% / cover;
+}
+#producto-04 {
+	background: url("https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/f638d2c5665e4be8b88aaf6c00c9ecc3_9366/Pants_Essentials_3_Franjas_Tejido_Jersey_Dobladillo_Abierto_Negro_IC0044_21_model.jpg")
+		no-repeat 50% 60% / cover;
+}
+
+.card-txt {
+	/* FLEX PARA QUE EL TITULO SIEMPRE ESTE ARRIBA Y EL BOTON ABAJO */
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1em;
+	padding: 1.5em;
+	text-align: center;
+}
+
+.card-txt .btn {
+	font-size: 0.8em;
+	background: linear-gradient(45deg, #fbfdcb 0%, #de9fb2 47%, #be5ae0 95%);
+}
+
+/* FOOTER CON FLEX */
+footer {
+	display: flex;
+	flex-flow: row;
+	justify-content: space-between;
+	align-items: baseline;
+	/* ESTILO */
+	padding: 0.5em 2em;
+	background: url("https://phantom-marca.unidadeditorial.es/444eb486b120a30eeffe26554bc9d8fa/crop/73x153/1046x700/resize/414/f/jpg/assets/multimedia/imagenes/2020/07/09/15943107011295.jpg")
+		no-repeat bottom/cover;
+}
+
+
+
+footer .redes {
+	text-align: right;
+}
+
+footer .redes h3 {
+	margin-bottom: 0.7vh;
+}
+/* UL CON FLEX */
+footer .redes ul {
+	display: flex;
+	flex-flow: row;
+	justify-content: flex-end;
+	gap: 2em;
+}
+
+@media only screen and (max-width: 500px) {
+	footer {
+		display: flex;
+		flex-flow: column;
+		align-items: center;
+	}
+
+		footer .redes ul {
+		display: flex;
+		justify-content: center;
+	}
+	
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Full height background */
+        body, html {
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: white;
+            text-align: center;
+        }
+
+        /* Container for the welcome content */
+        .welcome-container {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        /* Welcome message styling */
+        .welcome-container h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .welcome-container p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        /* Image styling */
+        .welcome-container img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .welcome-container img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Button styling */
+        .welcome-container button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background: #0072ff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .welcome-container button:hover {
+            background: #005bb5;
+        }
+    </style>
+</head>
+<body>
+
+<div class="welcome-container">
+    <h1>Welcome to Our Site!</h1>
+    <p>We're glad to have you here. Explore our latest features and offerings.</p>
+    <img src="https://via.placeholder.com/600x400" alt="Welcome Image">
+    <button onclick="showMessage()">Click for a Surprise</button>
+    <p id="surprise-message" style="display:none; margin-top:20px;">Thank you for visiting! Enjoy your stay!</p>
+</div>
+
+<script>
+    // JavaScript function to show a surprise message
+    function showMessage() {
+        const message = document.getElementById('surprise-message');
+        message.style.display = 'block';
+    }
+</script>
+
+</body>
+</html>

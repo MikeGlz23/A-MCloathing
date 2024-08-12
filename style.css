@@ -1,0 +1,322 @@
+/* GUIA:
+RESETEO
+FOOTER EN EL BORDE INFERIOR (CON FLEX / CON GRID)
+ESTILO DE TODOS LOS BOTONES
+HEADER CON FLEX
+NAV CON FLEX
+HERO CON GRID
+CONTENEDOR DE TARJETAS RESPONSIVE CON GRID
+TARJETAS CON FLEX
+TARJETA CRECE DE TAMAÑO CON HOVER
+FLEX PARA QUE EL TITULO SIEMPRE ESTE ARRIBA Y EL BOTON ABAJO
+UL CON FLEX
+
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+/* RESETEO */
+* {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	border: none;
+	outline: none;
+	color: inherit;
+	list-style: none;
+	font-family: "Poppins";
+}
+/* FOOTER SIEMPRE EN EL BORDE INFERIOR */
+/* -----------CON FLEX------------ */
+
+/* body {
+	min-height: 100vh;
+	height: 100%;
+	display: flex;
+		flex-flow: column nowrap;
+		justify-content: space-between;
+}
+
+main {
+	flex: 1;
+} */
+
+/* -----------CON GRID------------ */
+body {
+	/* ESTAS MEDIDAS SON OBLIGATORIAS PARA QUE EL SITIO MIDA COMO MINIMO EL ALTO DE LA PANTALLA */
+	min-height: 100vh;
+	height: 100%;
+	display: grid;
+	/* ARMA TRES FILAS, "AUTO" SIGNIFICA QUE EL CONTENEDOR SE ADAPTA A SU CONTENIDO, "FR" SIGINIFICA QUE LLENA EL RESTO DEL ESPACIO */
+	grid-template-rows: auto 1fr auto;
+}
+
+/* ESTILO DE TODOS LOS BOTONES */
+.btn {
+	display: inline-block;
+	padding: 0.6em 1.7em;
+	border-radius: 0.3em;
+	font-weight: 800;
+	text-transform: uppercase;
+	letter-spacing: 0.09em;
+}
+
+/* HEADER CON FLEX */
+header {
+	/* EL HEADER QUEDA ARRIBA */
+	position: sticky;
+	top: 0;
+	background: white;
+	z-index: 1;
+	/* SEPARAR LOGO Y MENU */
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	/* ESTILO */
+	padding: 1.5em 2em;
+	box-shadow: 0 0 20px 0 black;
+}
+
+.imagen{
+    margin: 0;
+    display:inline-block;
+    height: 25px;
+    float:none;
+}
+
+/* NAV CON FLEX */
+nav {
+	display: flex;
+	/* EN VEZ DE DAR PADDING A LOS BOTONES, AL SER SOLO PALABRAS USAMOS "GAP" QUE AGREGA ESPACIO ENTRE LOS ITEMS, DE ESTA FORMA NO HAY QUE DARLE UN ANCHO AL NAV/UL NI PADDING/MARGIN A LOS ENLACES */
+	gap: 1em;
+}
+
+/* HERO CENTRADO CON GRID */
+.hero {
+	background: url("https://jdesblog.s3.amazonaws.com/wp-content/uploads/2020/09/MIXED_GROUP_UK_SOUTH_D1_PO1_3069-1.jpg")
+		no-repeat center/cover;
+	height: 80vh;
+	display: grid;
+	place-content: center; /* ESTO CENTRA LOS HIJOS DEL PADRE VERTICAL Y HORIZONTALMENTE */
+}
+
+/* ESTILO DE LA CAJA DE TEXTO */
+.hero-txt {
+	text-align: center;
+	max-width: 50vw;
+	color: rgb(6, 6, 6);
+	background-color: rgb(255, 255, 255, .4);
+	border-radius: 10px;
+	border: 2px;
+	
+}
+
+.hero-txt h1 > span {
+	margin-top: 0.7em;
+	display: block; /* FILA NUEVA */
+	/* REDUCIR TIPOGRAFIA Y NEGRITA */
+	font-size: 0.7em;
+	font-weight: 400;
+	line-height: 1.8em;
+}
+
+/* COLOR DEL BOTÓN DEL HERO */
+.hero .btn {
+	margin-top: 1.3em;
+	background: white;
+}
+
+.productos {
+	padding: 3em;
+}
+
+.title-c {
+	text-align: center;
+	margin-bottom: 1.5em;
+	text-decoration: underline #db74bb 0.2em;
+	/* SEPARA EL SUBRAYADO DEL TEXTO */
+	text-underline-offset: 0.3em;
+}
+
+/* CONTENEDOR DE TARJETAS RESPONSIVE CON GRID */
+.contenedor {
+	display: grid;
+	/* 	-------------AL USAR GRID, LA ULTIMA FILA NO QUEDA CENTRADA-------------
+	GRID-TEMPLATE-COLUMNS: Esta propiedad de GRID crea las columnas de la grilla.
+	-REPEAT-> (cantidad de columnas, misma medida) -> repeat(2,200px) crea 2 columnas/filas de 200px.
+	-AUTO-FIT-> GRID CREA TANTAS COLUMNAS COMO ITEMS.
+	--> AUTO-FIT PUEDE CAMBIARSE POR AUTO-FILL QUE SIGUE CREANDO COLUMNAS AUNQUE YA USO TODOS LOS ITEMS.
+	-MINMAX-> CADA COLUMNA TIENE COMO MÍNIMO XXX y COMO MÁXIMO UNA FRACCIÓN*/
+
+	/* 	repeat (numero de veces que repite, medida) */
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 2em;
+}
+
+.social-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+.social-float a {
+    display: block;
+    margin-bottom: 10px;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #fbfdcb 0%, #de9fb2 47%, #be5ae0 95%);
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+.social-float a:hover {
+    background-color: #0056b3;
+}
+/* Ajusta los márgenes para diferentes tamaños de pantalla */
+@media (max-width: 576px) {
+    .social-float {
+        bottom: 10px;
+        right: 10px;
+    }
+    .social-float a {
+        margin-bottom: 5px;
+    }
+}
+
+/* TARJETAS CON FLEX*/
+.card {
+	display: flex;
+	flex-flow: column;
+	border-radius: 0.3em;
+	overflow: hidden; /*PARA QUE LA FOTO TENGA EL BORDER-RADIUS ARRIBA*/
+	box-shadow: 0 10px 25px -10px black;
+
+	transition: 300ms ease-in-out; /* TRANSICIÓN PARA EL EFECTO DEL :HOVER */
+	/* 	 */
+}
+
+/* TARJETA CRECE DE TAMAÑO CON HOVER */
+.card:hover {
+	transform: scale(1.05);
+	box-shadow: 0 15px 35px -10px black;
+}
+
+.card-img {
+	width: 100%;
+	flex-basis: 200px; /* FLEX SE USA PARA DARLE UN ALTO MINIMO DE 200PX A LA IMAGEN */
+}
+
+/* ID PARA DAR LAS IMAGENES DE CADA TARJETA */
+#producto-01 {
+	background: url("https://static.nike.com/a/images/f_auto/dpr_3.0,cs_srgb/w_363,c_limit/a4351a51-228e-4c37-8aa8-9def526ba3d3/sitio-web-oficial-de-nike.jpg")
+		no-repeat 50% 20% / cover;
+}
+#producto-02 {
+	background: url("https://site.innovasport.com/MKT%20Innovasport%20/Overtime/w35-20-nike-overtime-530x660.jpg")
+		no-repeat 50% 60% / cover;
+}
+
+#producto-03 {
+	background: url("https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/d96fe8e4-ea6b-46af-be3a-fa6f6b09cf4f/sudadera-con-gorro-talla-grande-sportswear-club-fleece-twzNLC.png")
+		no-repeat 50% 60% / cover;
+}
+#producto-04 {
+	background: url("https://images.unsplash.com/photo-1596138252452-463802fb8fc1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80")
+		no-repeat 50% 60% / cover;
+}
+
+.card-txt {
+	/* FLEX PARA QUE EL TITULO SIEMPRE ESTE ARRIBA Y EL BOTON ABAJO */
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1em;
+	padding: 1.5em;
+	text-align: center;
+}
+
+.card-txt .btn {
+	font-size: 0.8em;
+	background: linear-gradient(45deg, #fbfdcb 0%, #de9fb2 47%, #be5ae0 95%);
+}
+
+/* FOOTER CON FLEX */
+footer {
+	display: flex;
+	flex-flow: row;
+	justify-content: space-between;
+	align-items: baseline;
+	/* ESTILO */
+	padding: 0.5em 2em;
+	background: url("https://phantom-marca.unidadeditorial.es/444eb486b120a30eeffe26554bc9d8fa/crop/73x153/1046x700/resize/414/f/jpg/assets/multimedia/imagenes/2020/07/09/15943107011295.jpg")
+		no-repeat bottom/cover;
+}
+
+
+
+footer .redes {
+	text-align: right;
+}
+
+footer .redes h3 {
+	margin-bottom: 0.7vh;
+}
+/* UL CON FLEX */
+footer .redes ul {
+	display: flex;
+	flex-flow: row;
+	justify-content: flex-end;
+	gap: 2em;
+}
+
+@media only screen and (max-width: 500px) {
+	footer {
+		display: flex;
+		flex-flow: column;
+		align-items: center;
+	}
+
+		footer .redes ul {
+		display: flex;
+		justify-content: center;
+	}
+	
+}
+
+/* ID PARA DAR LAS IMAGENES DE CADA PLAYERA DE HOMBRE */
+#playera-01 { background: url("images/PlayHombre/adidas\ gris.png") no-repeat 50% 50% / cover; }
+#playera-02 { background: url("images/PlayHombre/basket.png") no-repeat 50% 50% / cover; }
+#playera-03 { background: url("images/PlayHombre/Broncos.png") no-repeat 50% 50% / cover; }
+#playera-04 { background: url("images/PlayHombre/KD.png") no-repeat 50% 50% / cover; }
+#playera-05 { background: url("images/PlayHombre/Leave\ Nothing.png") no-repeat 50% 50% / cover; }
+#playera-06 { background: url("images/PlayHombre/Nike\ azul.png") no-repeat 50% 50% / cover; }
+#playera-07 { background: url("images/PlayHombre/Nike\ larga.png") no-repeat 50% 50% / cover; }
+#playera-08 { background: url("images/PlayHombre/Nike\ negra.png") no-repeat 50% 50% / cover; }
+#playera-09 { background: url("images/PlayHombre/Nike\ Verde.png") no-repeat 50% 50% / cover; }
+#playera-10 { background: url("images/PlayHombre/Rockets.png") no-repeat 50% 50% / cover; }
+#playera-11 { background: url("images/PlayHombre/Rockies.png") no-repeat 50% 50% / cover; }
+#playera-12 { background: url("images/PlayHombre/Texas.png") no-repeat 50% 50% / cover; }
+#playera-13 { background: url("images/PlayHombre/Titans.png") no-repeat 50% 50% / cover; }
+#playera-14 { background: url("images/PlayHombre/Under\ armour\ blanca.png") no-repeat 50% 50% / cover; }
+#playera-15 { background: url("images/PlayHombre/Under\ Azul.png") no-repeat 50% 50% / cover; }
+#playera-16 { background: url("images/PlayHombre/under\ fosfo.png") no-repeat 50% 50% / cover; }
+#playera-17 { background: url("images/PlayHombre/Under\ golf.png") no-repeat 50% 50% / cover; }
+#playera-18 { background: url("images/PlayHombre/Under\ gris.png") no-repeat 50% 50% / cover; }
+#playera-19 { background: url("images/PlayHombre/Under\ negra.png") no-repeat 50% 50% / cover; }
+#playera-20 { background: url("images/PlayHombre/Witness.png") no-repeat 50% 50% / cover; }
+
+/* ID PARA DAR LAS IMAGENES DE CADA PLAYERA DE MUJER */
+#playera-mujer-01 { background: url("images/playeras\ dama/usa.png") no-repeat 50% 50% / cover; }
+#playera-mujer-02 { background: url("images/playeras\ dama/seattle.png") no-repeat 50% 50% / cover; }
+#playera-mujer-03 { background: url("images/playeras\ dama/polo\ verde.png") no-repeat 50% 50% / cover; }
+#playera-mujer-04 { background: url("images/playeras\ dama/azul\ m.png") no-repeat 50% 50% / cover; }
+#playera-mujer-05 { background: url("images/playeras\ dama/gris\ xl.png") no-repeat 50% 50% / cover; }
+
+/* ID PARA DAR LAS IMAGENES DE CADA PANTALON DE NIÑO */
+#pantalon-nino-01 { background: url("images/shorts\ hombre\ niños/under.png") no-repeat 50% 50% / cover; }
+#pantalon-nino-02 { background: url("images/shorts\ hombre\ niños/psg.png") no-repeat 50% 50% / cover; }
+#pantalon-nino-03 { background: url("images/shorts\ hombre\ niños/negro.png") no-repeat 50% 50% / cover; }
+#pantalon-nino-04 { background: url("images/shorts\ hombre\ niños/rojo.png") no-repeat 50% 50% / cover; }
+#pantalon-nino-05 { background: url("images/shorts\ hombre\ niños/gris.png") no-repeat 50% 50% / cover; }
